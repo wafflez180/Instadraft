@@ -54,12 +54,24 @@
     
     [self setupCocos2dWithOptions:cocos2dSetup];
     
+    [MGWU loadMGWU:@"halffullstudios"];
+
+    
     return YES;
 }
 
 - (CCScene*) startScene
 {
+    _app = (CCAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    [self ShowWhiteStatusBar];
+     
     return [CCBReader loadAsScene:@"MainScene"];
+}
+
+-(void)ShowWhiteStatusBar{
+    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO];
 }
 
 @end

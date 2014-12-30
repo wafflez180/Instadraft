@@ -28,6 +28,11 @@
 
 @interface AppController : CCAppDelegate
 {
+    
 }
+
+@property (nonatomic,strong) CCAppDelegate* app;
+
+-(void)ShowWhiteStatusBar;
 
 @end
