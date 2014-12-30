@@ -6,6 +6,8 @@
     CCLayoutBox *columnOne;
     CCLayoutBox *columnTwo;
     int draftcounter;
+    bool leftColumn;
+    bool rightColumn;
 }
 
 -(void)didLoadFromCCB{
@@ -35,17 +37,54 @@
     
     draftcounter = 0;
     
-    for (int i = 0; picArray.count > i; i++) {
-        draftbox *draftboxicon = [[draftbox alloc]init];
+    leftColumn = true;
+    
+    for (int i = picArray.count; 0 < i; i--) {
         
-        [columnOne addChild:draftboxicon];
+        draftbox *draftboxicon = (draftbox*)[CCBReader load:@"DraftBox"];
+        draftboxicon.scale = 0.7;
+        //GET A DRAFTBOX
+        
+        UIImage *originalImage = [picArray objectAtIndex:i - 1];
+        CGSize destinationSize = {150, 150};
+        
+        UIGraphicsBeginImageContext(destinationSize);
+        [originalImage drawInRect:CGRectMake(0,0,destinationSize.width,destinationSize.height)];
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        //CHANGE THE IMAGE'S SIZE TO 150 pixel BOX
+        
+        CCTexture *texture2D = [[CCTexture alloc] initWithCGImage:newImage.CGImage contentScale:1]; // this is new
+        CCSprite9Slice *sprite = [CCSprite9Slice spriteWithTexture:texture2D]; // this is new
+        
+        [draftboxicon addChild:sprite];
+        
+        // MAKE A SPRITE FROM THE IMAGE
+        
+        sprite.positionType = CCPositionTypeNormalized;
+        sprite.position = ccp(.50,.50);
+        
+        if (leftColumn){
+            // odd
+            [columnOne addChild:draftboxicon];
+            
+            leftColumn = false;
+            rightColumn = true;
+        }else{
+            // even
+            [columnTwo addChild:draftboxicon];
+            leftColumn = true;
+            rightColumn = false;
+        }
+        
+        //CENTER AND ADD THE SPRITE TO THE DRAFTBOX
         
         NSLog(@"draftbox added");
         draftcounter++;
     }
     
     NSLog(@"A total of %i draftbox(s) have been added", draftcounter);
-
+    
 }
 
 -(void)newdraft{
