@@ -21,21 +21,31 @@
     UIImage *inputedImage;
     CCNodeColor *savebuttonColorNode;
     CCButton *saveButton;
+    bool openedSavedDraft;
+    int openedDraftIndex;
 }
 
 -(void)didLoadFromCCB{
     
-    if (![self.name isEqualToString: @""]) {
+    NSNumber *theCurrentDraftIndex = [MGWU objectForKey:@"currentDraft"];
+    int currentDraftIndex = [theCurrentDraftIndex integerValue];
+    openedDraftIndex = currentDraftIndex;
+    
+    if (currentDraftIndex >= 0) {
         NSMutableArray *picArray = [MGWU objectForKey:@"PictureArray"];
         NSMutableArray *captionArray = [MGWU objectForKey:@"CaptionArray"];
         
-        int indexedArray = [self.name intValue];
-        
-        UIImage *draftImage = [picArray objectAtIndex:indexedArray];
-        NSString *draftCaption = [captionArray objectAtIndex:indexedArray];
+        UIImage *draftImage = [picArray objectAtIndex:currentDraftIndex];
+        NSString *draftCaption = [captionArray objectAtIndex:currentDraftIndex];
         
         NSArray *draftInfo = [NSArray arrayWithObjects: draftImage, draftCaption, nil];
+        
+        [self setUpDraftboxDraft:draftInfo];
+        
+        openedSavedDraft = true;
     }
+    
+    [MGWU setObject:[NSNumber numberWithInt:-1] forKey:@"currentDraft"];
     
     self.userInteractionEnabled = true;
     
@@ -145,21 +155,32 @@
     NSMutableArray *picArray = [MGWU objectForKey:@"PictureArray"];
     NSMutableArray *captionArray = [MGWU objectForKey:@"CaptionArray"];
     
-    float initialPicArrayCount = picArray.count;
-    float initialCaptionArrayCount = captionArray.count;
-    
-    [picArray addObject: inputedImage];
-    [captionArray addObject: inputedCaption];
-    
-    [MGWU setObject:picArray forKey:@"PictureArray"];
-    [MGWU setObject:captionArray forKey:@"CaptionArray"];
-    
-    NSMutableArray *picArrayTwo = [MGWU objectForKey:@"PictureArray"];
-    NSMutableArray *captionArrayTwo = [MGWU objectForKey:@"CaptionArray"];
-    
-    NSLog(@"You saved %d picture and %d caption", (int)picArrayTwo.count - (int)initialPicArrayCount, (int)captionArrayTwo.count - (int)initialCaptionArrayCount);
-    
-    NSLog(@"CAPTION: %@", inputedCaption);
+    if (!openedSavedDraft) {
+        float initialPicArrayCount = picArray.count;
+        float initialCaptionArrayCount = captionArray.count;
+        
+        [picArray addObject: inputedImage];
+        [captionArray addObject: inputedCaption];
+        
+        [MGWU setObject:picArray forKey:@"PictureArray"];
+        [MGWU setObject:captionArray forKey:@"CaptionArray"];
+        
+        NSMutableArray *picArrayTwo = [MGWU objectForKey:@"PictureArray"];
+        NSMutableArray *captionArrayTwo = [MGWU objectForKey:@"CaptionArray"];
+        
+        NSLog(@"You saved %d picture and %d caption", (int)picArrayTwo.count - (int)initialPicArrayCount, (int)captionArrayTwo.count - (int)initialCaptionArrayCount);
+        
+        NSLog(@"CAPTION: %@", inputedCaption);
+    }else if (openedSavedDraft){
+        [picArray replaceObjectAtIndex:openedDraftIndex withObject:inputedImage];
+        [captionArray replaceObjectAtIndex:openedDraftIndex withObject:inputedCaption];
+        
+        [MGWU setObject:picArray forKey:@"PictureArray"];
+        [MGWU setObject:captionArray forKey:@"CaptionArray"];
+        
+        NSLog(@"Successfully changed draft");
+        NSLog(@"CAPTION: %@", inputedCaption);
+    }
     
     [self backtohome];
 }
@@ -172,10 +193,7 @@
     
     UIImage *draftImage = [draftInfo objectAtIndex:0];
     NSString *draftCaption = [draftInfo objectAtIndex:1];
-    
-    saveButton.enabled = false;
-    saveButton.visible = false;
-    savebuttonColorNode.visible = false;
+
     placeholderPhoto.visible = false;
     inputedTextfield.string = draftCaption;
     inputedCaption = draftCaption;

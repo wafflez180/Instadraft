@@ -18,12 +18,13 @@
 }
 
 -(void)GoToDraft{
-    EditDraftScene *draftscene = [EditDraftScene alloc];
     
-    draftscene.name = self.name;
+    [MGWU setObject:[NSNumber numberWithInt:[self.name intValue]] forKey:@"currentDraft"];
     
     CCScene *theEditDraftScene = [CCBReader loadAsScene:@"EditDraftScene"];
     [[CCDirector sharedDirector] replaceScene:theEditDraftScene];
+    
+    NSLog(@"DRAFT INDEX ARRAY: %@",self.name);
 }
 
 @end

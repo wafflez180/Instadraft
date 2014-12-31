@@ -22,6 +22,7 @@
         // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"should_play_sounds"];
         
         [MGWU setObject:[NSNumber numberWithBool:YES] forKey:@"sound"];
+        [MGWU setObject:[NSNumber numberWithInt:-1] forKey:@"currentDraft"];
         [MGWU setObject:[NSMutableArray arrayWithObjects: nil] forKey:@"PictureArray"];
         [MGWU setObject:[NSMutableArray arrayWithObjects: nil] forKey:@"CaptionArray"];
         
