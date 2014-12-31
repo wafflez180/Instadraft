@@ -1,5 +1,6 @@
 #import "MainScene.h"
 #import "draftbox.h"
+#import "EditDraftScene.h"
 
 @implementation MainScene{
     CCTransition *_transition;
@@ -35,14 +36,23 @@
     NSMutableArray *picArray = [MGWU objectForKey:@"PictureArray"];
     NSMutableArray *captionArray = [MGWU objectForKey:@"CaptionArray"];
     
+    EditDraftScene *draftscene = [EditDraftScene alloc];
+    
+    draftscene.name = @"";
+    
     draftcounter = 0;
     
-    leftColumn = true;
+    if (picArray.count % 2) {
+        leftColumn = true;
+    }else{
+        leftColumn = false;
+    }
     
     for (int i = picArray.count; 0 < i; i--) {
         
         draftbox *draftboxicon = (draftbox*)[CCBReader load:@"DraftBox"];
         draftboxicon.scale = 0.7;
+        
         //GET A DRAFTBOX
         
         UIImage *originalImage = [picArray objectAtIndex:i - 1];
@@ -53,6 +63,8 @@
         UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         //CHANGE THE IMAGE'S SIZE TO 150 pixel BOX
+        
+        draftboxicon.name = [NSString stringWithFormat:@"%i", i - 1];
         
         CCTexture *texture2D = [[CCTexture alloc] initWithCGImage:newImage.CGImage contentScale:1]; // this is new
         CCSprite9Slice *sprite = [CCSprite9Slice spriteWithTexture:texture2D]; // this is new
@@ -65,16 +77,11 @@
         sprite.position = ccp(.50,.50);
         
         if (leftColumn){
-            // odd
             [columnOne addChild:draftboxicon];
-            
             leftColumn = false;
-            rightColumn = true;
         }else{
-            // even
             [columnTwo addChild:draftboxicon];
             leftColumn = true;
-            rightColumn = false;
         }
         
         //CENTER AND ADD THE SPRITE TO THE DRAFTBOX

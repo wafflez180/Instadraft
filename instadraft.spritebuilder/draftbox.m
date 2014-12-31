@@ -7,16 +7,23 @@
 //
 
 #import "draftbox.h"
+#import "EditDraftScene.h"
 
 @implementation draftbox{
-    
+    int indexedArray;
 }
 
 -(void)didLoadFromCCB{
     self.userInteractionEnabled = true;
+}
+
+-(void)GoToDraft{
+    EditDraftScene *draftscene = [EditDraftScene alloc];
     
+    draftscene.name = self.name;
     
-    
+    CCScene *theEditDraftScene = [CCBReader loadAsScene:@"EditDraftScene"];
+    [[CCDirector sharedDirector] replaceScene:theEditDraftScene];
 }
 
 @end

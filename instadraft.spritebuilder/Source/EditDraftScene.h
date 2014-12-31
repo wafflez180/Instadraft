@@ -12,4 +12,6 @@
 
 @property UIImagePickerController *picker;
 
+-(void)setUpDraftboxDraft: (NSArray *)draftInfo;
+
 @end

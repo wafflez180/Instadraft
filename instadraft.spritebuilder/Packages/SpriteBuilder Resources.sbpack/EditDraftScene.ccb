@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>127</integer>
+	<integer>155</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -1678,15 +1678,15 @@ to upload</string>
 				<array>
 					<dict>
 						<key>UUID</key>
-						<integer>5</integer>
+						<integer>143</integer>
 						<key>baseClass</key>
-						<string>CCTextField</string>
+						<string>CCNodeColor</string>
 						<key>children</key>
 						<array/>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>InputedCaptionCCTextField</string>
+						<string>BackgroundCaptionCCNodeColor</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -1709,7 +1709,106 @@ to upload</string>
 								<key>value</key>
 								<array>
 									<real>0.5</real>
-									<real>0.75</real>
+									<real>0.89999997615814209</real>
+									<integer>0</integer>
+									<integer>2</integer>
+									<integer>2</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>contentSize</string>
+								<key>type</key>
+								<string>Size</string>
+								<key>value</key>
+								<array>
+									<real>1.0499999523162842</real>
+									<real>1</real>
+									<integer>2</integer>
+									<integer>2</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>anchorPoint</string>
+								<key>type</key>
+								<string>Point</string>
+								<key>value</key>
+								<array>
+									<real>0.5</real>
+									<real>1</real>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>scale</string>
+								<key>type</key>
+								<string>ScaleLock</string>
+								<key>value</key>
+								<array>
+									<real>1</real>
+									<real>1</real>
+									<false/>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<real>0.0</real>
+									<real>0.25098040699958801</real>
+									<real>0.50196081399917603</real>
+									<real>1</real>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>opacity</string>
+								<key>type</key>
+								<string>Float</string>
+								<key>value</key>
+								<real>1</real>
+							</dict>
+						</array>
+					</dict>
+					<dict>
+						<key>UUID</key>
+						<integer>5</integer>
+						<key>baseClass</key>
+						<string>CCTextField</string>
+						<key>children</key>
+						<array/>
+						<key>customClass</key>
+						<string></string>
+						<key>displayName</key>
+						<string>InputedCaptionCCTextField</string>
+						<key>memberVarAssignmentName</key>
+						<string>inputedTextfield</string>
+						<key>memberVarAssignmentType</key>
+						<integer>1</integer>
+						<key>properties</key>
+						<array>
+							<dict>
+								<key>name</key>
+								<string>name</string>
+								<key>type</key>
+								<string>StringSimple</string>
+								<key>value</key>
+								<string></string>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>position</string>
+								<key>type</key>
+								<string>Position</string>
+								<key>value</key>
+								<array>
+									<real>0.5</real>
+									<real>0.69999998807907104</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -1746,7 +1845,7 @@ to upload</string>
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string></string>
+									<string>textfield</string>
 									<integer>1</integer>
 								</array>
 							</dict>
@@ -1757,9 +1856,9 @@ to upload</string>
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>250</real>
-									<real>80</real>
-									<integer>0</integer>
+									<real>0.80000001192092896</real>
+									<real>45</real>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1789,7 +1888,7 @@ to upload</string>
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>7</real>
+									<real>6</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1815,7 +1914,7 @@ to upload</string>
 						<key>displayName</key>
 						<string>Caption: CCLabelTTF</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>textfieldPlaceholder</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -1835,8 +1934,8 @@ to upload</string>
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.05000000074505806</real>
-									<real>0.75</real>
+									<real>0.11999999731779099</real>
+									<real>0.85000002384185791</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -1873,7 +1972,7 @@ to upload</string>
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>Write a caption...</string>
+									<string>Caption</string>
 									<false/>
 								</array>
 							</dict>
@@ -1906,19 +2005,6 @@ to upload</string>
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>color</string>
-								<key>type</key>
-								<string>Color3</string>
-								<key>value</key>
-								<array>
-									<real>0.60000002384185791</real>
-									<real>0.60000002384185791</real>
-									<real>0.60000002384185791</real>
-									<real>1</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>dimensions</string>
 								<key>type</key>
 								<string>Size</string>
@@ -1944,7 +2030,7 @@ to upload</string>
 								<key>type</key>
 								<string>IntegerLabeled</string>
 								<key>value</key>
-								<integer>1</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2050,7 +2136,7 @@ to upload</string>
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.27500000596046448</real>
+							<real>0.22499999403953552</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -2063,7 +2149,7 @@ to upload</string>
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>0.80000001192092896</real>
+							<real>1</real>
 							<real>0.30000001192092896</real>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -2114,7 +2200,7 @@ to upload</string>
 						<key>displayName</key>
 						<string>SaveCCButton</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>saveButton</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -2220,6 +2306,22 @@ to upload</string>
 									<string>Save</string>
 									<false/>
 								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>zoomWhenHighlighted</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<true/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>togglesSelectedState</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2511,6 +2613,8 @@ to upload</string>
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -2518,7 +2622,7 @@ to upload</string>
 				<key>displayName</key>
 				<string>SaveButtonCCNodeColor</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>savebuttonColorNode</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
